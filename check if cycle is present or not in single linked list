@@ -1,0 +1,28 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Cycle:
+    def __init__(self):
+        self.head=None
+    def cycle_element(self):
+        slow=self.head
+        fast=self.head
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+            if slow==fast:
+                return True
+        return False
+l=Cycle()
+n=Node(10)
+l.head=n
+n1=Node(20)
+n.next=n1
+n2=Node(30)
+n1.next=n2
+n3=Node(40)
+n2.next=n3
+n4=Node(50)
+n3.next=n4
+print("Is there any cycle element is present:",l.cycle_element())
