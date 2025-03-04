@@ -1,0 +1,26 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Middle:
+    def __init__(self):
+        self.head=None
+    def middle_element(self):
+        slow=self.head
+        fast=self.head
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+        return slow.data
+l=Middle()
+n=Node(10)
+l.head=n
+n1=Node(20)
+n.next=n1
+n2=Node(30)
+n1.next=n2
+n3=Node(40)
+n2.next=n3
+n4=Node(50)
+n3.next=n4
+print("middle element is:",l.middle_element())
