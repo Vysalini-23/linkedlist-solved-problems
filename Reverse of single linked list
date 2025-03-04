@@ -1,0 +1,43 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Cycle:
+    def __init__(self):
+        self.head=None
+    def reverse(self):
+        cur=self.head
+        prev=None
+        while cur:
+            n=cur.next
+            cur.next=prev
+            prev=cur
+            cur=n
+        self.head=prev
+    def display(self):
+        if self.head==None:
+            print("sll is empty")
+        else:
+            temp=self.head
+            while temp:
+                print(temp.data,"-->",end=" ",)
+                temp=temp.next
+            print()
+    
+l=Cycle()
+n=Node(10)
+l.head=n
+n1=Node(20)
+n.next=n1
+n2=Node(30)
+n1.next=n2
+n3=Node(40)
+n2.next=n3
+n4=Node(50)
+n3.next=n4
+#l.reverse()
+print("The original list is:")
+l.display()
+print("Reverse of linked list is:")
+l.reverse()
+l.display()
