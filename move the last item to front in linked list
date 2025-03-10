@@ -1,0 +1,57 @@
+# Python code to move the last item to front
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Function to move the last node 
+# to the front of the linked list
+def move_to_front(head):
+  
+    # If the list is empty or has 
+    # only one node, no need to move
+    if head is None or head.next is None:
+        return head
+      
+    # To keep track of the second last node
+    sec_last = None  
+    
+    # To traverse to the last node
+    last = head      
+
+    # Traverse the list to find the 
+    # last and second last nodes
+    while last.next is not None:
+        sec_last = last
+        last = last.next
+
+    # Change the next of second last node to None
+    sec_last.next = None
+
+    # Make the last node as the new head
+    last.next = head
+    head = last
+
+    return head
+
+def print_list(node):
+    while node is not None:
+        print(node.data, end=" ")
+        node = node.next
+    print()
+
+# Create a linked list 1->2->3->4->5
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+head.next.next.next = Node(4)
+head.next.next.next.next = Node(5)
+
+print("Linked list before:")
+print_list(head)
+
+head = move_to_front(head)
+
+print("Linked list after:")
+print_list(head)
