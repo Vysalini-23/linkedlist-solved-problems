@@ -1,0 +1,29 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def removeDuplicates(head):
+    current = head
+    while current and current.next:
+        if current.val == current.next.val:
+            current.next = current.next.next  # Remove duplicate
+        else:
+            current = current.next  # Move to the next node
+    return head
+
+# Helper function to print the linked list
+def printList(head):
+    while head:
+        print(head.val, end=" -> " if head.next else "")
+        head = head.next
+    print()
+
+# Example Usage:
+head = ListNode(2, ListNode(2, ListNode(4, ListNode(5))))
+head = removeDuplicates(head)
+printList(head)  # Output: 2 -> 4 -> 5
+
+head2 = ListNode(2, ListNode(2, ListNode(2, ListNode(2, ListNode(2)))))
+head2 = removeDuplicates(head2)
+printList(head2)  # Output: 2
